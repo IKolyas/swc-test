@@ -14,9 +14,23 @@
                         @csrf
 
                         <div class="input-group mb-3">
+                            <input type="text" name="login"
+                                   class="form-control @error('login') is-invalid @enderror" value="{{ old('login') }}"
+                                   placeholder="Login">
+                            <div class="input-group-append">
+                                <div class="input-group-text"><span class="fas fa-user"></span></div>
+                            </div>
+                            @error('login')
+                            <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="input-group mb-3">
                             <input type="text" name="name"
                                 class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
-                                placeholder="Full name">
+                                placeholder="Name">
                             <div class="input-group-append">
                                 <div class="input-group-text"><span class="fas fa-user"></span></div>
                             </div>
@@ -28,13 +42,28 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <input type="email" name="email" value="{{ old('email') }}"
-                                class="form-control @error('email') is-invalid @enderror" placeholder="Email">
+                            <input type="text" name="surname"
+                                   class="form-control @error('surname') is-invalid @enderror" value="{{ old('surname') }}"
+                                   placeholder="Surname">
                             <div class="input-group-append">
-                                <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                                <div class="input-group-text"><span class="fas fa-user"></span></div>
                             </div>
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
+                            @error('surname')
+                            <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="date" name="birthday"
+                                   class="form-control @error('birthday') is-invalid @enderror" value="{{ old('birthday') }}"
+                                   placeholder="Birthday">
+                            <div class="input-group-append">
+                                <div class="input-group-text"><span class="fas fa-user"></span></div>
+                            </div>
+                            @error('birthday')
+                            <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
