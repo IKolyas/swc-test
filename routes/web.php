@@ -20,7 +20,10 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/events', [EventsController::class, 'index'])->name('events.index');
+    Route::get('/events/{event?}', [EventsController::class, 'index'])->name('events.index');
+    Route::get('/events/reload/{event?}', [EventsController::class, 'reload'])->name('events.reload');
+    Route::get('/events/attach/{event}', [EventsController::class, 'attach'])->name('events.attach');
+    Route::get('/events/detach/{event}', [EventsController::class, 'detach'])->name('events.detach');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
