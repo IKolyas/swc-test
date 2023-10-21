@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Event extends Model
@@ -12,10 +13,15 @@ class Event extends Model
     public $casts = ['created_at' => 'date'];
 
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(
-            Event::class,
+            User::class,
             'users_events',
             'event_id',
             'user_id'
